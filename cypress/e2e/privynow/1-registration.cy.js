@@ -105,7 +105,7 @@ describe("Test Registration Page of PrivyNow", () => {
       cy.url().should('include', 'sign-in');
     })
 
-    it.only("FORWARD BROWSER - Should be able to go forward in 'login > regitration > login' flow", () => {
+    it("FORWARD BROWSER - Should be able to go forward in 'login > regitration > login' flow", () => {
       cy.visit('https://app.privynow.com/');
       cy.contains('Create New Account').click({force:true});
       cy.wait(1000);
