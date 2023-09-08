@@ -12,9 +12,9 @@ describe("Test Dashboard of PrivyNow", () => {
         cy.wait(10000)
     });
 
+//to be continued :))
 
 
 
-    
 
 })
