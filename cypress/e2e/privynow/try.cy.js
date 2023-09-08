@@ -10,7 +10,7 @@ describe("Test Dashboard of PrivyNow", () => {
       cy.get('input[data-cy="password"]').type('Qwert123')
       cy.get('button[data-cy="submit"]').should('have.class', 'btn-primary')
       cy.wait(500)
-      cy.get('button[data-cy="submit"]').click({froce:true})
+      cy.get('button[data-cy="submit"]').click({force:true})
       cy.wait(10000)
       cy.get('.navbar-name').should('contain', 'Welcome')
     });
