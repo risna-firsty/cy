@@ -20,17 +20,17 @@ describe("Test Dashboard of PrivyNow", () => {
     })
 
     it("Should be able to access Settings from Dashboard", () => {
-      cy.get('#__BVID__73__BV_button_').click()
-      cy.contains('Settings').click()
-      cy.wait(1000)
-      cy.get('.profile-title').should('contain', 'Profile')
+      cy.get('#__BVID__73__BV_button_').click();
+      cy.contains('Settings').click();
+      cy.wait(1000);
+      cy.get('.profile-title').should('contain', 'Profile');
     })
 
     it.only("PROFILE > FULLNAME - Should not be able to input symbols in changing fullname", () => {
-      cy.get('.col-2').contains('Change').click()
-      cy.wait(1000)
-      cy.get('input[id="fullname"]').type('/.,=][]!')
-      cy.get('.text-danger').should('contain', 'Please type a proper name.')
+      cy.get('.col-2').contains('Change').click();
+      cy.wait(1000);
+      cy.get('input[id="fullname"]').type('/.,=][]!');
+      cy.get('.text-danger').should('contain', 'Please type a proper name.');
     })
 
     // to be continued

@@ -3,13 +3,14 @@
 describe("Test Registration Page of PrivyNow", () => {
     beforeEach(() => {
       cy.viewport(1200, 800)
+      cy.clearLocalStorage();
       cy.visit('https://app.privynow.com/');
       cy.contains('Create New Account').click({force:true});
       cy.wait(1000);
     });
 
  
-    it("Should be able to access registration page of PrivyNow", () => {
+    it.only("Should be able to access registration page of PrivyNow", () => {
       cy.get('h1').should('contain', 'Create New Account')
       cy.url().should('include', 'sign-up');
     })
@@ -72,18 +73,18 @@ describe("Test Registration Page of PrivyNow", () => {
       cy.url().should('include', 'sign-in');
     })
 
-    it.only("CLICK LOGIN - Should be able to go to login page", () => {
+    it("CLICK LOGIN - Should be able to go to login page", () => {
       cy.contains('Log in').click();
       cy.get('h1').should('contain', 'Log in');
       cy.get(".text-center").should('contain', 'Or, log in using');
       cy.url().should('include', 'sign-in');
     })
 
-    it.only("FORWARD BROWSER - Should be able to go forward in 'login > regitration > login' flow", () => {
+    it("FORWARD BROWSER - Should be able to go forward in 'login > regitration > login' flow", () => {
       cy.go('back');
       cy.wait(2000);
       cy.go('forward');
       cy.get('h1').should('contain', 'Create New Account');
-      cy.url().should('include', 'sign-up');;
+      cy.url().should('include', 'sign-up');
     })
   })
