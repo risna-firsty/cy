@@ -6,6 +6,11 @@ describe("Test Login Page of PrivyNow", () => {
       cy.clearLocalStorage();
       cy.visit('https://app.privynow.com/');
     });
+
+    afterEach (() => {
+      cy.wait(2000)
+      cy.screenshot()
+    })
   
     it("Should be able to access login page", () => {
       cy.get('h1').should('contain', 'Log in');

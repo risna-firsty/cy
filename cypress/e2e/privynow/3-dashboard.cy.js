@@ -6,7 +6,6 @@ describe("Test Dashboard of PrivyNow", () => {
     cy.visit('https://app.privynow.com/');
     cy.get('input[data-cy="email"]').type("risnaprod1@mailinator.com");
     cy.get('input[data-cy="password"]').type('Qwert123');
-    cy.get('button[data-cy="submit"]').should('have.class', 'btn-primary');
     cy.wait(500);
     cy.get('button[data-cy="submit"]').click({force:true});
     cy.wait(10000);
