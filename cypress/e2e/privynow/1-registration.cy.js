@@ -1,13 +1,18 @@
 /// <reference types="cypress" />
 
 describe("Test Registration Page of PrivyNow", () => {
-    beforeEach(() => {
-      cy.viewport(1200, 800)
-      cy.clearLocalStorage();
-      cy.visit('https://app.privynow.com/');
-      cy.contains('Create New Account').click({force:true});
-      cy.wait(1000);
-    });
+  beforeEach(() => {
+    cy.viewport(1200, 800)
+    cy.clearLocalStorage();
+    cy.visit('https://app.privynow.com/');
+    cy.contains('Create New Account').click({force:true});
+    cy.wait(1000);
+  });
+
+  afterEach (() => {
+    cy.wait(2000)
+    cy.screenshot()
+  })
 
  
     it.only("Should be able to access registration page of PrivyNow", () => {
@@ -87,4 +92,4 @@ describe("Test Registration Page of PrivyNow", () => {
       cy.get('h1').should('contain', 'Create New Account');
       cy.url().should('include', 'sign-up');
     })
-  })
+})

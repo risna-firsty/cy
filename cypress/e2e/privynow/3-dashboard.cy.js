@@ -11,6 +11,10 @@ describe("Test Dashboard of PrivyNow", () => {
     cy.wait(10000);
   });
 
+  afterEach (() => {
+    cy.wait(2000)
+    cy.screenshot()
+  })
 
     it("Should be able to access document folders", () => {
       cy.contains('Sent').click();
