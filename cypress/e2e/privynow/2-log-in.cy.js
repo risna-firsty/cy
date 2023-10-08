@@ -28,7 +28,7 @@ describe("Test Login page of  PrivyNow", () => {
   it("[LOG004] Login with invalid credential", () => {
   cy.email("risnaprod1@mailinator.com");
   cy.password("Qwerty12345");
-  cy.get('button[data-cy="submit"]').click();
+  cy.get('button[data-cy="submit"]').click({force:true});
   cy.get('.error-box').should('contain','Your email or password combination is incorrect, please check and try again')
   });
 

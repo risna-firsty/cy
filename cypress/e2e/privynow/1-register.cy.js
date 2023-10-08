@@ -16,29 +16,24 @@ describe("Test Registration Page of PrivyNow", () => {
 
     it('[REG001] Access Registration Page', () => {
       cy.register("Create New Account");
-      cy.url().should('include', 'sign-up');
     });
 
     it('[REG002] Input numbers in fullname field', () => {
       cy.fullName("555555"); 
-      cy.nameDataResponse('Please type a proper name.');
     });
 
     it('[REG003] Input symbols in fullname field (except " . ")', () => {
       cy.reload();
       cy.fullName('|":?,><!');
-      cy.nameDataResponse('Please type a proper name.')
     });
 
     it('[REG004] Input special characters in fullname field', () => {
       cy.reload(2000);
       cy.fullName('Rïsñæ Sètįyâńa');
-      cy.nameDataResponse('Please type a proper name.');
     });
 
     it('[REG005] Input invalid email in email field', () => {
       cy.email('risnamailinator.com');
-      cy.emailDataResponse('Please enter a valid email address.');
     });
 
     it('[REG006] Input unmeet requirement password', () => {
@@ -47,8 +42,8 @@ describe("Test Registration Page of PrivyNow", () => {
     });
 
     it('[REG007] Input different confirmation password', () => {
-      cy.reload(2000)
-      cy.pass('Qwert123')
+      cy.reload(2000);
+      cy.pass('Qwert123');
       cy.confirmPass('Qwe');
       cy.passDataResponse("The password doesn't match")
     });

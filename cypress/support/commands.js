@@ -24,6 +24,8 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
+// const { last } = require("cypress/types/lodash");
+
 
 //Visit Login - assert 1
 Cypress.Commands.add("login1", (label)=>{
@@ -61,26 +63,29 @@ Cypress.Commands.add("password", (label)=>{
 // Visit Register
 Cypress.Commands.add("register", (label)=>{
    cy.get('h1').should('contain', label);
+   cy.url().should('include', 'sign-up');
 })
 
 // Register - fullname
 Cypress.Commands.add("fullName",(label)=>{
    cy.get('input[data-cy="fullname"]').type(label);
+   cy.get('span[class="sm"]').should('contain', 'Please type a proper name.');
 })
 
 //Register - fullname error message
 Cypress.Commands.add("nameDataResponse", (label)=>{
-   cy.get('span[class="sm"]').should('contain', label);
+   cy.get('span[class="sm"]').should('contain', );
 })
 
 //Register - email
 Cypress.Commands.add("email", (label)=>{
    cy.get('input[data-cy="email"]').type(label);
+   cy.get('span[class="sm"]').should('contain', 'Please enter a valid email address.');
 })
 
 //Register - email error message
 Cypress.Commands.add("emailDataResponse", (label)=>{
-   cy.get('span[class="sm"]').should('contain', label);
+   cy.get('span[class="sm"]').should('contain', 'Please enter a valid email address.');
 })
 
 //Register - password
@@ -103,4 +108,30 @@ Cypress.Commands.add('sideBar', (label)=>{
    cy.get('.sidebar-item').contains(label).click();
    cy.wait(4000);
 })
+
+// Dashboard - Move next page on doc list
+Cypress.Commands.add("nextPageDocList", (label)=>{
+   cy.get('[class="icon icon-dark-grey link ml-0 ml-sm-2 icon-md-xl"]'). click();
+   cy.wait(5000);
+   cy.get('.font--secondary-grey').should('contain', label);
+})
+
+//Dashboard - Move back previous page on doc list
+Cypress.Commands.add("previousPageDocList", (label)=>{
+   cy.get('[class="icon icon-dark-grey link ml-0 ml-sm-3 icon-md-xl"]').click();
+   cy.wait(5000);
+   cy.get('.font--secondary-grey').should('contain', label);
+})
+
+//Dashboard - Search exsist doc
+Cypress.Commands.add("docTitle",(label)=>{
+   cy.get('input[placeholder="Search"]').type(label);
+   cy.wait(5000);
+})
+
+//Dashboard - Search unexsist doc
+Cypress.Commands.add("searchDataResponse", (label)=>{
+   cy.get(".error-text").should("contain",label);
+})
+
 

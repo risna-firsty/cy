@@ -3,20 +3,21 @@
 describe("Test Upload of PrivyNow", () => {
   beforeEach(() => {
     cy.viewport(1200, 800);
-    cy.visit('https://app.privynow.com/');
-    cy.get('input[data-cy="email"]').type("risnaprod1@mailinator.com");
-    cy.get('input[data-cy="password"]').type('Qwert123');
-    cy.wait(500);
-    cy.get('button[data-cy="submit"]').click({froce:true});
-    cy.wait(10000);
+    cy.clearLocalStorage();
+    cy.visit("https://app.privynow.com/");
+    cy.loginApp("risnaprod1@mailinator.com", "Qwert123");
   });
 
-  afterEach (() => {
-    cy.wait(2000)
-    cy.screenshot()
-  })
+  // afterEach (() => {
+  //   cy.wait(2000)
+  //   cy.screenshot()
+  // })
   
   it('[UP001] Access upload page', () => {
+    cy.get('a[href="/dashboard/document/setup"]').click();
+    cy.url().should('include', "/setup");
+    cy.get('.step-title').should('contain', 'Browse Document')
+
     
   });
 
@@ -33,3 +34,5 @@ describe("Test Upload of PrivyNow", () => {
   });
 
 })
+
+// to be continued
