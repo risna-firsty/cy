@@ -4,10 +4,9 @@ describe("Test Dashboard of PrivyNow", () => {
   beforeEach(() => {
     cy.viewport(1200, 800);
     cy.visit('https://app.privynow.com/');
-    cy.get('input[data-cy="email"]').type("risnaprod1@mailinator.com");
-    cy.get('input[data-cy="password"]').type('Qwert123');
-    cy.wait(500);
-    cy.get('button[data-cy="submit"]').click({force:true});
+    cy.email('risnaprod1@mailinator.com');
+    cy.password('Qwert123');
+    cy.get('button[data-cy="submit"]').click({froce:true});
     cy.wait(10000);
   });
 
@@ -17,19 +16,19 @@ describe("Test Dashboard of PrivyNow", () => {
   })
 
     it("Should be able to access document folders", () => {
-      cy.contains('Sent').click();
+      cy.sideBar('Sent');
       cy.wait(4000);
       cy.get('.table-pagination__info--main').should('not.have.id', '#__BVID__1030');
 
-      cy.contains('Draft').click();
+      cy.sideBar('Draft');
       cy.wait(4000);
       cy.get('.table-pagination__info--main').should('not.have.id', '#__BVID__1543');
 
-      cy.contains('Inbox').click();
+      cy.sideBar('Inbox');
       cy.wait(4000);
       cy.get('.table-pagination__info--main').should/('have.class', '.action-pagination__checkbox');
           
-      cy.contains('Trash').click();
+      cy.sideBar('Trash');
       cy.wait(4000);
       cy.get('.table-pagination__info--main').should('not.have.id', '#__BVID__1543');
     })
