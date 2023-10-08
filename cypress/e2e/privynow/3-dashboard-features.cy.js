@@ -15,7 +15,6 @@ describe("Test Dashboard of PrivyNow", () => {
 
     it("[DAS001] Access dashboard page", () => {
       cy.url().should("include", "/dashboard");
-      cy;
     });
 
     it("[DAS002] Access document folders", () => {
